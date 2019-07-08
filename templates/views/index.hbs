@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+           <meta name="viewport" content="width=device-width, initial-scale=1">
+        </title>
+        <style>
+        .button {
+    align-content: center;
+  position: relative;
+  margin-top: 15px;
+  background-color: #4CAF50;
+  border: none;
+  margin:auto;
+  display:block;
+  font-size: 28px;
+  color: #FFFFFF;
+  padding: 20px;
+  width: 400pxpx;
+  border-radius: 4px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+.button:after {
+  content: "";
+  background: #90EE90;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px!important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+</style>
+{{!-- <link rel="stylesheet" type="text/css" href="/css/damegeButton.css"> --}}
+    </head>
+    <body>
+      <p id="info"></p>
+        <h1 style="color:blue;text-align:center;">Reports</h1>
+        <form id="damage-form">
+          <input id="from-date" type="date" name="fromdate" placeholder="from" required>
+          <input id="to-date" type="date" name="todate" placeholder="to" required>
+          
+          <button class="button"  id="damage" type="submit">Damage</button><br>
+        </form>
+        
+        {{!-- <div class="twoToneCenter">
+        <button class="button"  id="damage" type="submit">Damage</button><br>
+        </div> --}}
+        
+        <button  class="button" id="preheating" type="submit">Preheating</button><br>
+        <button class="button" id="wb" type="submit">WellBlock </button><br>
+        <button class="button" id="ladledownreport" type="submit"> LadleDown </button><br>
+        <button class="button" id="dailyrefractory" type="submit">Daily Refractory</button><br>
+        <button class="button" id="heats" type="submit"> Heats </button><br>
+        <button class="button" id="unplannedmachine" type="submit">Unplanned Machine Change</button><br>
+        
+
+        <script src="/js/damageReport.js"></script>
+    </body>
+</html>
