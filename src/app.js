@@ -56,15 +56,15 @@ app.use(bodyParser.urlencoded({
 app.use(express.json())
 
 app.get('/', (req,res) => {
-    res.render('index')
+    res.render('login')
 })
 
 
 app.post('/damage', (req,res) => {
     try {
         console.log('naman')
-        console.log(req.body.fromdate)
-        console.log(req.body.todate)
+        // console.log(req.body.fromdate)
+        // console.log(req.body.todate)
         let query1 = damageRef.orderBy('timestamp').get()
   .then(snapshot => {
     if (snapshot.empty) {
@@ -79,7 +79,7 @@ app.post('/damage', (req,res) => {
     let workbook = new Excel.Workbook();
     let worksheet = workbook.addWorksheet('Damage Data');
     worksheet.columns = [
-            {header:'timestamp',key:'timestamp',width:40},
+            // {header:'timestamp',key:'timestamp',width:40},
             {header: 'date', key:'date', width: 15},
             {header: 'ladleno', key:'ladleno', width: 10},
             {header: 'casterno', key:'castorNo', width: 10},
@@ -137,7 +137,7 @@ app.post('/preheating', (req,res) => {
     let workbook = new Excel.Workbook();
     let worksheet = workbook.addWorksheet('preheatingdata');
     worksheet.columns = [
-            {header:'timestamp',key:'timestamp',width:10},
+            // {header:'timestamp',key:'timestamp',width:10},
             {header: 'Ladle Number', key:'ladleno', width: 15},
             {header: 'Type of Repair', key:'typeofrepair', width: 15},
             {header: 'Date & Time of Heating start at LD Services', key:'ld_preheatingstart', width: 20},
@@ -162,7 +162,7 @@ app.post('/preheating', (req,res) => {
                 + currentdate.getSeconds();
         let filename="preheating"+datetime+".xlsx";
         console.log(filename);
-        workbook.xlsx.writeFile(filename).then(() => {
+        workbook.xlsx.writeFile('./datasheets/'+filename).then(() => {
             console.log('file saved')
         })
         .catch((e) => {
@@ -198,7 +198,7 @@ app.post('/wb', (req,res) => {
     let workbook = new Excel.Workbook();
     let worksheet = workbook.addWorksheet('preheatingdata');
     worksheet.columns = [
-            {header:'timestamp',key:'timestamp',width:10},
+            // {header:'timestamp',key:'timestamp',width:10},
             {header: 'Date of WB Fixing', key:'date', width: 20},
             {header: 'Ladle Number', key:'ladle_no', width: 15},
             {header: 'Type of Repair', key:'type_of_repair', width: 15},
@@ -216,7 +216,7 @@ app.post('/wb', (req,res) => {
                 + currentdate.getSeconds();
         let filename="wellblock"+datetime+".xlsx";
         console.log(filename);
-        workbook.xlsx.writeFile(filename).then(() => {
+        workbook.xlsx.writeFile('./datasheets/'+filename).then(() => {
             console.log('file saved')
         })
         .catch((e) => {
@@ -251,7 +251,7 @@ app.post('/unplannedmachine', (req,res) => {
     let workbook = new Excel.Workbook();
     let worksheet = workbook.addWorksheet('MachineReport');
     worksheet.columns = [
-            {header:'timestamp',key:'timestamp',width:10},
+            // {header:'timestamp',key:'timestamp',width:10},
             {header: 'Date ( SMLP Machine change)', key:'smlp_date', width: 18},
             {header: 'Ladle Number', key:'ladleno', width: 10},
             {header: 'Machine Number', key:'machineno', width: 10},
@@ -275,7 +275,7 @@ app.post('/unplannedmachine', (req,res) => {
                 + currentdate.getSeconds();
         let filename="machinechangedata"+datetime+".xlsx";
         console.log(filename);
-        workbook.xlsx.writeFile(filename).then(() => {
+        workbook.xlsx.writeFile('./datasheets/'+filename).then(() => {
             console.log('file saved')
         })
         .catch((e) => {
@@ -311,7 +311,7 @@ app.post('/heats', (req,res) => {
     let workbook = new Excel.Workbook();
     let worksheet = workbook.addWorksheet('HeatReport');
     worksheet.columns = [
-            {header:'timestamp',key:'timestamp',width:10},
+            // {header:'timestamp',key:'timestamp',width:10},
             {header: 'Date', key:'date', width: 18},
             {header: 'Ladle Number', key:'ladle_no', width: 10},
             {header: 'Machine No', key:'machine_no', width: 10},
@@ -342,7 +342,7 @@ app.post('/heats', (req,res) => {
                 + currentdate.getSeconds();
         let filename="heatsdata"+datetime+".xlsx";
         console.log(filename);
-        workbook.xlsx.writeFile(filename).then(() => {
+        workbook.xlsx.writeFile('./datasheets/'+filename).then(() => {
             console.log('file saved')
         })
         .catch((e) => {

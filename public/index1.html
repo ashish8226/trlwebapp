@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta charset="UTF-8">
+    <title>Sample FirebaseUI App</title>
+    <!-- *******************************************************************************************
+       * TODO(DEVELOPER): Paste the initialization snippet from:
+       * Firebase Console > Overview > Add Firebase to your web app. *
+       ***************************************************************************************** -->
+       <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#config-web-app -->
+    
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBYt3aUsVvEYYfcnOixRv7nUI0HtcuK_1E",
+        authDomain: "trl-ld1.firebaseapp.com",
+        databaseURL: "https://trl-ld1.firebaseio.com",
+        projectId: "trl-ld1",
+        storageBucket: "trl-ld1.appspot.com",
+        messagingSenderId: "505625498509",
+        appId: "1:505625498509:web:4dd8cedf230690be"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    
+    <script type="text/javascript">
+      initApp = function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var uid = user.uid;
+            var phoneNumber = user.phoneNumber;
+            var providerData = user.providerData;
+            //user.getIdToken().then(function(accessToken) {
+            //   document.getElementById('sign-in-status').textContent = 'Signed in';
+            //   document.getElementById('sign-in').textContent = 'Sign out';
+            //   document.getElementById('account-details').textContent = JSON.stringify({
+            //     displayName: displayName,
+            //     email: email,
+            //     emailVerified: emailVerified,
+            //     phoneNumber: phoneNumber,
+            //     photoURL: photoURL,
+            //     uid: uid,
+            //     accessToken: accessToken,
+            //     providerData: providerData
+            //   }, null, '  ');
+            // });
+          } else {
+            // User is signed out.
+            // document.getElementById('sign-in-status').textContent = 'Signed out';
+            // document.getElementById('sign-in').textContent = 'Sign in';
+            // document.getElementById('account-details').textContent = 'null';
+          }
+        }, function(error) {
+          console.log(error);
+        });
+      };
+
+      window.addEventListener('load', function() {
+        initApp();
+      });
+    </script>
+
+        <style>
+        .button {
+    align-content: center;
+  position: relative;
+  margin-top: 15px;
+  background-color: #4CAF50;
+  border: none;
+  margin:auto;
+  display:block;
+  font-size: 28px;
+  color: #FFFFFF;
+  padding: 20px;
+  width: 400px;
+  border-radius: 4px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+.button:after {
+  content: "";
+  background: #90EE90;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px!important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+</style>
+<!-- <link rel="stylesheet" type="text/css" href="/css/damegeButton.css">  -->
+    </head>
+    <body>
+    <p id="info"></p>
+
+    <div id="sign-in-status"></div>
+    <div id="sign-in"></div>
+     <pre id="account-details"></pre>
+        
+        <h1 style="color:blue;text-align:center;">Reports</h1>
+       
+        
+        <!-- <div class="twoToneCenter">
+        <button class="button"  id="damage" type="submit">Damage</button><br>
+        </div> -->
+         <button class="button"  id="damage" type="submit">Damage</button><br>
+        <button  class="button" id="preheating" type="submit">Preheating</button><br>
+        <button class="button" id="wb" type="submit">WellBlock </button><br>
+        <!-- <button class="button" id="ladledownreport" type="submit"> LadleDown </button><br>
+        <button class="button" id="dailyrefractory" type="submit">Daily Refractory</button><br> -->
+        <button class="button" id="heats" type="submit"> Heats </button><br>
+        <button class="button" id="unplannedmachine" type="submit">Unplanned Machine Change</button><br>
+        
+
+        <script src="/js/damageReport.js"></script>
+    </body>
+</html>
